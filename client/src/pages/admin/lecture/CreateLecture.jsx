@@ -56,8 +56,8 @@ const CreateLecture = () => {
                     placeholder="Your Title Name" />
                 </div>
                 <div className='flex gap-3'>
-                    <Button variant="outline" onClick={()=> navigate("/admin/course/courseId")}>Back To Course</Button>
-                    <Button disbaled="isLoading" onClick={createLectureHandler} >
+                    <Button variant="outline" onClick={()=> navigate(`/admin/course/${courseId}`)}>Back To Course</Button>
+                    <Button disbaled={isLoading} onClick={createLectureHandler} >
                         {isLoading ? (
                             <>
                             <Loader2 className='mr-2 h-4 w-4 animate-spin'/>

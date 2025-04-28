@@ -41,7 +41,7 @@ export const authApi = createApi({
                 url:"logout",
                 method: 'GET'
             }),
-            async onQueryStarted(arg, {dispatch, queryFulfilled}){
+            async onQueryStarted(arg, {dispatch}){
                 try {
                     dispatch(userLoggedOut());
                     

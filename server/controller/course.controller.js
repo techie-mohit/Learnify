@@ -347,6 +347,8 @@ export const togglePublishCourse = async (req, res) => {
   try {
     const { courseId } = req.params;
     const { publish } = req.query; // true, false
+
+    
     const course = await Course.findById(courseId);
     if (!course) {
       return res.status(404).json({

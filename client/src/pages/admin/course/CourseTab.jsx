@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import React, { useEffect, useState } from 'react'
 import { Loader2 } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEditCourseMutation, useGetCourseyIdQuery, usePublishCourseMutation } from '@/features/api/courseApi';
+import { useEditCourseMutation, useGetCourseByIdQuery, usePublishCourseMutation } from '@/features/api/courseApi';
 import { toast } from 'sonner';
 
 const CourseTab = () => {
@@ -28,7 +28,7 @@ const CourseTab = () => {
     const courseId = params.courseId;
 
 
-    const { data: courseByIdData, isLoading: courseByIdLoading ,refetch} = useGetCourseyIdQuery(courseId);
+    const { data: courseByIdData, isLoading: courseByIdLoading ,refetch} = useGetCourseByIdQuery(courseId);
 
     const [publishCourse, {data:publishData, isLoading:publishLoading}] = usePublishCourseMutation();
 
