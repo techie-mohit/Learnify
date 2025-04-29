@@ -70,18 +70,18 @@ const Profile = () => {
         </div>
         <div>
           <div className='mb-2'>
-            <h1 className='font-semibold text-gray-900 dark:text-gray-100'>Name:
-              <span className='font-normal text-gray-700 dark:text-gray-300 ml-2'>{user?.name}</span>
+            <h1 className='font-semibold text-gray-900 dark:text-gray-400'>Name:
+              <span className='font-normal text-gray-700 dark:text-gray-400 ml-2'>{user?.name}</span>
             </h1>
           </div>
           <div className='mb-2'>
-            <h1 className='font-semibold text-gray-900 dark:text-gray-100'>Email:
-              <span className='font-normal text-gray-700 dark:text-gray-300 ml-2'>{user?.email}</span>
+            <h1 className='font-semibold text-gray-900 dark:text-gray-400'>Email:
+              <span className='font-normal text-gray-700 dark:text-gray-400 ml-2'>{user?.email}</span>
             </h1>
           </div>
           <div className='mb-2'>
-            <h1 className='font-semibold text-gray-900 dark:text-gray-100'>Role:
-              <span className='font-normal text-gray-700 dark:text-gray-300 ml-2'>{user?.role?.toUpperCase()}</span>
+            <h1 className='font-semibold text-gray-900 dark:text-gray-400'>Role:
+              <span className='font-normal text-gray-700 dark:text-gray-400 ml-2'>{user?.role?.toUpperCase()}</span>
             </h1>
           </div>
           <Dialog>
@@ -97,24 +97,24 @@ const Profile = () => {
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className='grid grid-cols-4 items-center gap-4'>
-                  <label className='col-span-1 text-gray-900 dark:text-gray-100'>Name</label>
+                  <label className='col-span-1 text-gray-900 dark:text-gray-200'>Name</label>
                   <input 
                   type='text' 
                   placeholder="Name" 
-                  className='col-span-3 p-2 border border-gray-300 dark:border-gray-700 rounded-md' 
+                  className='col-span-3 p-2 border border-gray-300 dark:border-gray-700 dark:text-gray-700 rounded-md' 
                   value={name}
                   onChange={(e)=> setName(e.target.value)}/>
                 </div>
                 <div className='grid grid-cols-4 items-center gap-4'>
                   <label className='col-span-1 text-gray-900 dark:text-gray-100'>Profile Photo</label>
-                  <input  onChange={onChangeHandler} type='file' accept="image/*" className='col-span-3 p-2 border border-gray-300 dark:border-gray-700 rounded-md'/>
+                  <input  onChange={onChangeHandler} type='file' accept="image/*" className='col-span-3 p-2 border border-gray-300 dark:border-gray-700 dark:text-gray-700 rounded-md'/>
                 </div>
                 <div className='grid grid-cols-4 items-center gap-4'>
-                  <label className='col-span-1 text-gray-900 dark:text-gray-100'>Role</label>
+                  <label className='col-span-1 text-gray-900 dark:text-gray-200'>Role</label>
                   <input 
                   type='text' 
-                  placeholder="Role" 
-                  className='col-span-3 p-2 border border-gray-300 dark:border-gray-700 rounded-md' 
+                  placeholder="instructor or student" 
+                  className='col-span-3 p-2 border border-gray-300 dark:border-gray-700 rounded-md dark:text-gray-700' 
                   value={role}
                   onChange={(e)=> setRole(e.target.value)}/>
                 </div>

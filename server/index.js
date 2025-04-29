@@ -8,12 +8,15 @@ import courseRoute from "./routes/course.route.js";
 import mediaRoute from "./routes/media.route.js";
 import purchaseRoute from "./routes/purchase.route.js";
 import courseProgressRoute from "./routes/courseProgress.route.js"
+import { stripeWebhook } from './controller/coursePurchase.controller.js';
 
 const app = express();
 dotenv.config();
 
 // if .env is outside the server folder then we use in package.json "start": "nodemon server/index.js" otherwise it gives an error
 const PORT  = process.env.PORT;
+
+app.post('/stripe/webhook', express.raw({type: 'application/json'}), stripeWebhook);
 
 // default middleware
 app.use(express.json());

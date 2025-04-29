@@ -59,13 +59,15 @@ function CourseDetail() {
           <Card>
             <CardHeader>
               <CardTitle>Course Content</CardTitle>
-              <CardDescription>4 lectures</CardDescription>
+              <CardDescription>{course.lectures.length} lectures</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
               {course.lectures.map((lecture, idx) => (
                 <div key={idx} className="flex items-center gap-3 text-sm">
                   <span>
-                    {true ? <PlayCircle size={14} /> : <Lock size={14} />}
+
+                  {/* editted purchased to true */}
+                    {purchased ? <PlayCircle size={14} /> : <Lock size={14} />}  
                   </span>
                   <p>{lecture.lectureTitle}</p>
                 </div>
