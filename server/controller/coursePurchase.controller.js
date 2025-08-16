@@ -45,8 +45,8 @@ export const createCheckoutSession = async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: `${process.env.FRONTEND_URL}/course-progress/${courseId}?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.FRONTEND_URL}/course-detail/${courseId}`,
+      success_url: `https://learnify-uy89.onrender.com/course-progress/${courseId}?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `https://learnify-uy89.onrender.com/course-detail/${courseId}`,
       metadata: {
         courseId: courseId.toString(),
         userId: userId.toString(),
