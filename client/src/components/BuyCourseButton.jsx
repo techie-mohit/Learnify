@@ -1,31 +1,27 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "./ui/button";
 import { useCreateCheckoutSessionMutation } from "@/features/api/purchaseApi";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 const BuyCourseButton = ({ courseId }) => {
-  const [createCheckoutSession, { data, isLoading, isSuccess, isError , error}] =
-    useCreateCheckoutSessionMutation();
+  const [createCheckoutSession, { isLoading }] = useCreateCheckoutSessionMutation();
 
   const purchaseCourseHandler = async () => {
-    await createCheckoutSession(courseId);
+    try {
+      const res = await createCheckoutSession(courseId).unwrap(); // unwrap is important
+      if (res?.url) {
+        window.location.href = res.url; // redirect to Stripe checkout
+      } else {
+        toast.error("Invalid response from server");
+      }
+    } catch (err) {
+      // RTK Query errors can be in err.data.message or err.error
+      const msg = err?.data?.message || err?.error || "Failed to create checkout session";
+      toast.error(msg);
+    }
   };
 
-  useEffect(()=>{
-    if(isSuccess){
-      if(data?.url){
-        window.location.href = data.url // redirect to stripe  checkout
-      }
-      else{
-        toast.error("Invalid Response  From Server")
-      }
-    }
-     if(isError){
-      toast.error(error?.data?.message || "Failed to create Checkout Session")
-     }
-
-  },[data, isSuccess, isError, error])
   return (
     <Button
       disabled={isLoading}
@@ -34,7 +30,7 @@ const BuyCourseButton = ({ courseId }) => {
     >
       {isLoading ? (
         <>
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait{" "}
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait
         </>
       ) : (
         "Purchase Course"
