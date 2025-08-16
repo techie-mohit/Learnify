@@ -14,19 +14,26 @@ import { stripeWebhook } from './controller/coursePurchase.controller.js';
 const app = express();
 dotenv.config();
 
+
 // if .env is outside the server folder then we use in package.json "start": "nodemon server/index.js" otherwise it gives an error
-const PORT  = process.env.PORT;
+
 
 const __dirname = path.resolve(); // get the current directory name
 
-app.post('/stripe/webhook', express.raw({type: 'application/json'}), stripeWebhook);
-
+app.post('/api/stripe/webhook', 
+  express.raw({type: 'application/json'}), 
+  (req, res, next) => {
+    console.log('Webhook received! Path:', req.path); // Debugging
+    next();
+  },
+  stripeWebhook
+);
 // default middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
+    origin: "http://localhost:5173",    
     credentials: true,
-    origin: "https://learnify-uy89.onrender.com"
 }))
 
 app.get("/home", (_, res)=>{
@@ -44,9 +51,9 @@ app.get('*', (req, res) => {
 })
 
 
-app.listen(PORT, ()=>{
+app.listen(8080, ()=>{
     connectDb();
-    console.log(`server is running at port ${PORT}`);
+    console.log(`server is running at port 8080`);
 })
 
 

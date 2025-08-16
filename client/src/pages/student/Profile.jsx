@@ -6,8 +6,11 @@ import Course from './Course'
 import { useLoadUserQuery, useUpdateUserMutation} from '@/features/api/authApi'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
+import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
+
+  const navigate = useNavigate();
 
   const[name, setName] = useState("");
   const[profilePhoto, setProfilePhoto] = useState("");
@@ -43,6 +46,7 @@ const Profile = () => {
     if(isSuccess){
       refetch();
       toast.success(data.messsage || "Profile Updated Successfully");
+      navigate(-1);
     }
     if(isError){
       toast.error(error.message || "Failed to update profile");

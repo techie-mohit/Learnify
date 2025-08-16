@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'sonner'
 
-const MEDIA_API = "https://learnify-uy89.onrender.com/api/media";
+const MEDIA_API = "http://localhost:8080/api/media";
 
 const LectureTab = () => {
 
@@ -84,6 +84,7 @@ const LectureTab = () => {
     useEffect(() => {
         if (isSuccess) {
             toast.success(data.message);
+            navigate(-1);
         }
         if (error) {
             toast.error(error.data.message);
@@ -94,6 +95,7 @@ const LectureTab = () => {
     useEffect(() => {
         if (removeSuccess) {
             toast.success(removeData.message);
+            navigate(-1);
 
         }
     }, [removeSuccess])
