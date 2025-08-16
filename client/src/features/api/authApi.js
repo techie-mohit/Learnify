@@ -1,7 +1,8 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {userLoggedIn, userLoggedOut} from '../authSlice.js';
 
-const USER_API = "https://learnify-uy89.onrender.com/api/user/";
+const USER_API = `${import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080'}/api/user/`;
+
 
 
 export const authApi = createApi({
