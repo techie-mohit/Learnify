@@ -40,10 +40,7 @@ app.use("/api/course", courseRoute);
 app.use("/api/purchase",purchaseRoute);
 app.use("/api/progress", courseProgressRoute);
 
-app.use(express.static(path.join(__dirname, "/client/dist")));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
-})
+
 
 
 app.listen(port, ()=>{
